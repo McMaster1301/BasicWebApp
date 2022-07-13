@@ -15,13 +15,18 @@ public class QueryProcessor {
            return "Finn";
         }
         if (query.contains(" plus ") && query.contains("is ")) {
-            String one = query.substring(query.indexOf("is "), query.indexOf(" plus"));
-            String two = query.substring(query.indexOf(" plus "));
+            String one = query.substring(query.indexOf("is ") + 3, query.indexOf(" plus"));
+            String two = query.substring(query.indexOf(" plus ") + 6);
             int o = Integer.parseInt(one);
             int t = Integer.parseInt(two);
             int res = o + t;
             return String.valueOf(res);
         }
         return "";
+    }
+
+    public static void main(String[] args) {
+        QueryProcessor queryProcessor = new QueryProcessor();
+        queryProcessor.process("what is 10 plus 10");
     }
 }
