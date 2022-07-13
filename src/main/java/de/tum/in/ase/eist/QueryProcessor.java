@@ -22,11 +22,19 @@ public class QueryProcessor {
             int res = o + t;
             return String.valueOf(res);
         }
+        if (query.contains(" multiplied by ") && query.contains("is ")) {
+            String one = query.substring(query.indexOf("is ") + 3, query.indexOf(" multiplied by"));
+            String two = query.substring(query.indexOf(" multiplied by ") + 14);
+            int o = Integer.parseInt(one);
+            int t = Integer.parseInt(two);
+            int res = o * t;
+            return String.valueOf(res);
+        }
         return "";
     }
 
     public static void main(String[] args) {
         QueryProcessor queryProcessor = new QueryProcessor();
-        queryProcessor.process("what is 10 plus 10");
+        queryProcessor.process("what is 10 mutliplied by 10");
     }
 }
