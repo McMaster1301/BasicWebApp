@@ -14,8 +14,8 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "Finn";
         }
-        if (query.contains(" plus ")) {
-            String one = query.substring(query.indexOf(": "), query.indexOf(" plus"));
+        if (query.contains(" plus ") && query.contains("is ")) {
+            String one = query.substring(query.indexOf("is "), query.indexOf(" plus"));
             String two = query.substring(query.indexOf(" plus "));
             int o = Integer.parseInt(one);
             int t = Integer.parseInt(two);
