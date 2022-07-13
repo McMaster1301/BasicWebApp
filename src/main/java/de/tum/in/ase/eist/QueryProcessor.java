@@ -30,11 +30,24 @@ public class QueryProcessor {
             int res = o * t;
             return String.valueOf(res);
         }
+        if (query.contains("which of the following numbers is the largest: ")) {
+            String q = "which of the following numbers is the largest: ";
+            String onlynumbers = query.substring(query.indexOf(q) + q.length());
+            String numbers[] = onlynumbers.split(", ");
+            int max = Integer.MIN_VALUE;
+            for (String number : numbers) {
+                if (Integer.parseInt(number) > max) {
+                    max = Integer.parseInt(number);
+                }
+            }
+            return String.valueOf(max);
+
+        }
         return "";
     }
 
     public static void main(String[] args) {
         QueryProcessor queryProcessor = new QueryProcessor();
-        queryProcessor.process("what is 10 mutliplied by 10");
+        queryProcessor.process("which of the following numbers is the largest: 13, 14, 346, 235234");
     }
 }
